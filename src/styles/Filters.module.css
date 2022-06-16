@@ -1,0 +1,25 @@
+.filters {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px 0;
+}
+
+.filters > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.filters > div > p {
+    margin: 0 10px 0 0;
+    font-weight: 500;
+}
+
+.filters > div > input {
+    width: 150px;
+    padding: 5px 5px 5px 10px;
+}
+
+.filters > div > select {
+    width: 100px;
+}
