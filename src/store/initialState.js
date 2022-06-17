@@ -1,5 +1,8 @@
 export const initialState = {
     countryData: null,
-    fromDate: [],
-    toDate: []
+    fromDate: "",
+    toDate: "",
+    fromDateIndex: "",
+    toDateIndex: "",
+    countryDataToShow: null
 }

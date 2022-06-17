@@ -1,12 +1,14 @@
 import './App.css';
-import Chart from './components/Chart';
+import ChartDiv from './components/ChartDiv';
 import Filters from './components/Filters';
+import Table from './components/Table';
 
 function App() {
   return (
     <div className="App">
       <Filters />
-      <Chart />
+      <ChartDiv />
+      <Table />
     </div>
   );
 }
