@@ -5,7 +5,6 @@ import styles from "../styles/Table.module.css"
 export default function Table() {
 
   const { countryDataToShow } = useSelector(store => store)
-  console.log("J", countryDataToShow);
 
   return (
     <>
@@ -22,7 +21,7 @@ export default function Table() {
           </tr>
           {
             countryDataToShow.map(data => (
-              <tr>
+              <tr key={data.Date}>
                 <td>{data.Date.slice(0, 10)}</td>
                 <td>{data.Confirmed}</td>
                 <td>{data.Active}</td>

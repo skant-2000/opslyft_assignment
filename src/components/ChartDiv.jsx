@@ -20,6 +20,10 @@ export default function ChartDiv() {
             }
             dispatch(setCountryDataToShow(data))
         }
+        else if ( countryData && countryData.message ) {
+            dispatch(setCountryDataToShow(null))
+            alert("country not found")
+        }
         else if (  fromDateIndex < 0 && toDateIndex < 0 ) {
             dispatch(setCountryDataToShow(null))
         }
@@ -29,7 +33,7 @@ export default function ChartDiv() {
 
     let data = useRef([])
 
-    if ( countryDataToShow ) {
+    if ( countryDataToShow && !countryData.message ) {
         data.current = []
         data.current.push(["Dates", "Confirmed", "Active", "Recovered", "Deaths"])
         for ( let i = 0; i <= countryDataToShow.length-1; i++ ) {
@@ -40,38 +44,30 @@ export default function ChartDiv() {
             arr.push(countryDataToShow[i].Recovered)
             arr.push(countryDataToShow[i].Deaths)
             data.current.push(arr)
-            console.log("in")
         }
     }
 
-    console.log("LKJH")
-
   return (
     <>
-        {countryDataToShow === null ? 
-        (<div>
-            <h1>search country or set date before today</h1>
-        </div>) 
-        :
-        countryDataToShow === [] ? 
-        (<div>
-            <h1>Country Not Found</h1>
-        </div>) 
-        : 
-        (<div className={styles.chart}>
-            <h3>{countryData[0].Country}</h3>
-            {
-                data.current !== [] && 
-                <Chart
-                    chartType="Bar"
-                    data={data.current}
-                    width="100%"
-                    height="300px"
-                    margin="auto"
-                />
-            }
-        </div>
-        )}
+        {!countryDataToShow || countryData.message ? 
+            (<div className={styles.noData}>
+                <h1>No Data</h1>
+            </div>)
+            : 
+            (<div className={styles.chart}>
+                <h3>{countryData[0].Country}</h3>
+                {
+                    data.current !== [] && 
+                    <Chart
+                        chartType="Bar"
+                        data={data.current}
+                        width="100%"
+                        height="300px"
+                        margin="auto"
+                    />
+                }
+            </div>)
+        }
     </>
   )
 }

@@ -64,7 +64,6 @@ export default function Filters() {
         if ( countryData && !countryData.message && fromDateIndex > 0 ) {
             let fromDateFound = countryData[fromDateIndex].Date.slice(0, 10)
             dispatch(setFromDate(fromDateFound))
-            console.log(fromDateFound, fromDateIndex)
         }
     }, [toDateIndex])
 
